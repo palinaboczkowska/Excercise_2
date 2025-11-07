@@ -138,7 +138,12 @@ class Program
     //Menyval 3 Upprepar text 10 gånger på samma rad
     static void RepeatText()
     {
-
+        Console.WriteLine("Ange en text att upprepa: ");
+        string input = Console.ReadLine()!;
+        for (int i = 1; i <= 10; i++)
+        { 
+            Console.Write($"{i}.{input} ");
+        }
     }
 
     //Menuval 4 Hämtar det tredje ordet från en mening
