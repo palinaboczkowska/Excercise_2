@@ -20,17 +20,16 @@ class Program
             switch (input)
             {
                 case "1":
-
+                    CalculateSingleTicket();
                     break;
                 case "2":
-
+                    CalculateGroupTickets();
                     break;
-
                 case "3":
-
+                    RepeatText();
                     break;
                 case "4":
-
+                    GetThirdWord();
                     break;
                 case "0":
                     isRunning = false;
