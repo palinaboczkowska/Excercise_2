@@ -41,7 +41,7 @@ namespace Övning_2
 
 
 
-        // Menyval 1 Beräknar pris för en person baserat på ålder
+        // Undermenyval 1 Beräknar pris för en person baserat på ålder
         public static void CalculateSingleTicket()
         {
             int age = -1;
@@ -68,7 +68,7 @@ namespace Övning_2
         }
 
 
-        //Menyval 2 Beräknar totalpris för ett sällskap
+        //Undermenyval 2 Beräknar totalpris för ett sällskap
         //Fortfarande inte bra, för lång
         public static void CalculateGroupTickets()
         {
