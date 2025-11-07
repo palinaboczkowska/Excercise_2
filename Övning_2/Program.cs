@@ -149,7 +149,13 @@ class Program
     //Menuval 4 Hämtar det tredje ordet från en mening
     static void GetThirdWord()
     {
+        while(true)
+        { 
+        Console.WriteLine("Ange en mening med minst 3 ord: ");
+        var input = Console.ReadLine().Split(" ");
+        Console.WriteLine($"Det tredje ordet är {input[2]}");
 
+        }
     }
 
 
