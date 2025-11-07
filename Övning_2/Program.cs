@@ -43,25 +43,52 @@ class Program
         }
     }
 
+    //Hjälp metod för att returnera priset
+    static int GetTicketPrice(int age)
+    {
+        //Antar att den maximala åldern för biobesökare är 120 år (:
+        if (age < 0 || age > 120)
+            return -1; // ogiltig ålder
+        else if ((age >= 0 && age < 5) || (age > 100 && age <= 120))
+            return 0; // gratis inträde
+        else if (age < 20)
+            return 80; //ungdomspris
+        else if (age > 64)
+            return 90; //pensionärspris
+        else
+            return 120; //standard
+
+    }
+
     // Menyval 1 Beräknar pris för en person baserat på ålder
     static void CalculateSingleTicket()
     {
-        Console.Write("Ange din ålder: ");
-        if (int.TryParse(Console.ReadLine(), out int age))
+        int age = -1;
+        // Frågar tills användaren anger en giltig ålder
+        while (true)
         {
-            if ((age >= 0 && age < 5) || (age > 100 && age < 120)) Console.WriteLine("Gratis inträde!");
-            else if (age < 0 || age > 120) Console.WriteLine("Ogiltig ålder.");
-            else if (age < 20) Console.WriteLine("Ungdompris: 80kr");
-            else if (age > 64) Console.WriteLine("Pensionärspris: 90 kr");
-            else Console.WriteLine("Standardpris: 120");
+            Console.Write("Ange din ålder: ");
+            if (int.TryParse(Console.ReadLine(), out age))
+            {
+                int price = GetTicketPrice(age);
+                if (price == -1)
+                    Console.WriteLine("Ogiltig ålder.");
+                else
+                {
+                    if (price == 0) Console.WriteLine("Gratis onträde!");
+                    else Console.WriteLine($"Biljettpris: {price}kr");
+                    break;
+                }
+            }
+            else
+                Console.WriteLine("Ogiltig ålder. Ange ett heltal.");
         }
-        else
-            Console.WriteLine("Ogiltig ålder. Ange ett heltal.");
+
     }
 
 
     //Menyval 2 Beräknar totalpris för ett sällskap
-    //Inte bra än, hitta en mer kompakt lösning
+    //Fortfarande inte bra, för lång
     static void CalculateGroupTickets()
     {
         int total = 0;
@@ -88,47 +115,37 @@ class Program
                 Console.Write($"Person {i}, ange ålder: ");
                 if (int.TryParse(Console.ReadLine(), out age) && age >= 0 && age <= 120)
                 {
-                    if ((age >= 0 && age < 5) || (age > 100 && age < 120))
-                        break;
-                    else if (age < 0 || age > 120) Console.WriteLine("Ogiltig ålder.");
-                    else if (age < 20)
-                    {
-                        total += 80;
-                        break;
-                    }
-                    else if (age > 64)
-                    {
-                        total += 90;
-                        break;
-                    }
+                    int price = GetTicketPrice(age);
+
+                    if (price == -1)
+                        Console.WriteLine("Ogiltig ålder.");
                     else
                     {
-                        total += 120;
-                        break;
+                        total += price;
+                        break; // Gå vidare till nästa person
                     }
                 }
-
                 else
                     Console.WriteLine("Ogiltigt ålder. Försök igen.");
             }
-           
+
         }
         Console.WriteLine($"Antal personer: {groupSize}");
         Console.WriteLine($"Totalkostnad för hela sällskapet: {total}kr");
     }
 
 
-//Menyval 3 Upprepar text 10 gånger på samma rad
-static void RepeatText()
-{
+    //Menyval 3 Upprepar text 10 gånger på samma rad
+    static void RepeatText()
+    {
 
-}
+    }
 
-//Menuval 4 Hämtar det tredje ordet från en mening
-static void GetThirdWord()
-{
+    //Menuval 4 Hämtar det tredje ordet från en mening
+    static void GetThirdWord()
+    {
 
-}
+    }
 
 
 
