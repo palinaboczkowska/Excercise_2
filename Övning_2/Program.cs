@@ -152,8 +152,23 @@ class Program
         while(true)
         { 
         Console.WriteLine("Ange en mening med minst 3 ord: ");
-        var input = Console.ReadLine().Split(" ");
-        Console.WriteLine($"Det tredje ordet är {input[2]}");
+            var input = Console.ReadLine();
+            if(string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Du måste skriva något.");
+                continue;
+            }
+            var words = input.Split(" ");
+            if (words.Length < 3)
+            {
+                Console.WriteLine("Meningen måste innehålla minst tre ord");
+            }
+            else
+            {
+                Console.WriteLine($"Det tredje ordet är {words[2]}");
+                break;
+
+            }
 
         }
     }
