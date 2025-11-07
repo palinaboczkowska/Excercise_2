@@ -43,9 +43,20 @@ class Program
 
     // Menyval 1 Beräknar pris för en person baserat på ålder
     static void CalculateSingleTicket()
-{
+    {
+        Console.Write("Ange din ålder: ");
+        if (int.TryParse(Console.ReadLine(), out int age)) 
+        { 
+            if (age < 5 || age > 100) 
+                Console.WriteLine("Gratis inträde!"); 
+            else if (age < 20) Console.WriteLine("Ungdompris: 80kr"); 
+            else if (age > 64) Console.WriteLine("Pensionärspris: 90 kr"); 
+            else Console.WriteLine("Standardpris: 120"); 
+        } 
+        else 
+            Console.WriteLine("Ogiltig ålder."); 
+    }
 
-}
 
     //Menyval 2 Beräknar totalpris för ett sällskap
     static void CalculateGroupTickets()
