@@ -41,7 +41,7 @@ void ShowBioMenu()
 {
     while (true)
     {
-        Console.WriteLine("\n---BIO---");
+        Console.WriteLine("\n-BIO-");
         Console.WriteLine("1: Pris för en person");
         Console.WriteLine("2: Pris för ett sällskap");
         Console.WriteLine("0: Tillbaka till huvudmenyn");
@@ -64,8 +64,6 @@ void ShowBioMenu()
                 break;
         }
     }
-
-
 }
 
 
