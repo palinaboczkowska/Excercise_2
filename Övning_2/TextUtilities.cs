@@ -28,7 +28,7 @@ namespace Övning_2
                     Console.WriteLine("Du måste skriva något.");
                     continue;
                 }
-                var words = input.Split(" "); // delar upp meningen i ord
+                var words = input.Split(" ", StringSplitOptions.RemoveEmptyEntries); // delar upp meningen i ord och hantera flera mellanslag
                 if (words.Length < 3)
                 {
                     Console.WriteLine("Meningen måste innehålla minst tre ord");
