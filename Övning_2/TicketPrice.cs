@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Övning_2
 {
 
     public enum TicketPrice 
     {
-        Invalid = -1,
-        Free = 0,
-        Youth = 80,
-        Senior = 90,
-        Standard = 120
+        Ogiltig = -1,
+        Gratis = 0,
+        Ungdomspris = 80,
+        Pensionärspris = 90,
+        Standardpris = 120
     }
 
     public static class TicketCalculator
@@ -27,15 +23,15 @@ namespace Övning_2
         {
             
             if (age < 0 || age > MaxAge)
-                return TicketPrice.Invalid; // ogiltig ålder
+                return TicketPrice.Ogiltig;
             else if ((age >= 0 && age < 5) || (age > 100 && age <= MaxAge))
-                return TicketPrice.Free; // gratis inträde
+                return TicketPrice.Gratis;
             else if (age < 20)
-                return TicketPrice.Youth; //ungdomspris
+                return TicketPrice.Ungdomspris;
             else if (age > 64)
-                return TicketPrice.Senior; //pensionärspris
+                return TicketPrice.Pensionärspris;
             else
-                return TicketPrice.Standard; //standard
+                return TicketPrice.Standardpris;
 
         }
 
@@ -45,24 +41,47 @@ namespace Övning_2
         public static void CalculateSingleTicket()
         {
             int age = -1;
-            // Frågar tills användaren anger en giltig ålder
+            //Frågar tills användaren anger en giltig ålder
             while (true)
             {
                 Console.Write("Ange din ålder: ");
                 if (int.TryParse(Console.ReadLine(), out age))
                 {
                     TicketPrice price = GetTicketPrice(age); //hämtar pris
-                    if (price == TicketPrice.Invalid)
+                    if (price == TicketPrice.Ogiltig)
                         Console.WriteLine("Ogiltig ålder.");
                     else
                     {
-                        if (price == TicketPrice.Free) Console.WriteLine("Gratis inträde!");
-                        else Console.WriteLine($"Biljettpris: {(int)price}kr");
+                        if (price == TicketPrice.Gratis) Console.WriteLine("Gratis inträde!");
+                        else Console.WriteLine($"{price}: {(int)price}kr");
                         break;
                     }
                 }
                 else
                     Console.WriteLine("Ogiltig ålder. Ange ett heltal.");
+
+
+                //Implementationen med nästlad if-sats och utan hjälpmetod
+                //Console.Write("Ange ålder: ");
+                //if (int.TryParse(Console.ReadLine(), out int age))
+                //{
+                //    if (age >= 0 && age <= 120)
+                //    {
+                //        if (age < 20)
+                //            Console.WriteLine("Ungdomspris: 80kr");
+                //        else
+                //        {
+                //            if (age > 64)
+                //                Console.WriteLine("Pensionärspris: 90kr");
+                //            else
+                //                Console.WriteLine("Standardpris: 120kr");
+                //        }
+                //    }
+                //    else
+                //        Console.WriteLine("Ogiltig ålder.");
+                //}
+                //else
+                //    Console.WriteLine("Ogiltig ålder. Ange ett heltal.");
             }
 
         }
@@ -98,7 +117,7 @@ namespace Övning_2
                     {
                         TicketPrice price = GetTicketPrice(age); //hämtar pris
 
-                        if (price == TicketPrice.Invalid)
+                        if (price == TicketPrice.Ogiltig)
                             Console.WriteLine("Ogiltig ålder.");
                         else
                         {
